@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ritik CyberTech</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#070b12;color:#eef3f8}
+.container{max-width:900px;margin:auto;padding:22px}.brand{font-size:28px;font-weight:800}.brand span{font-weight:400}
+.subtitle{color:#8f9aaa;margin-top:5px}.status{margin:22px 0;padding:18px;border:1px solid #1d3940;border-radius:18px;background:#0c171c}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:#39d98a;margin-right:8px}.status b{color:#39d98a}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.card{background:#0d131d;border:1px solid #1c2634;border-radius:18px;padding:18px}
+.card h3{margin:8px 0}.card p{color:#9ba7b7;line-height:1.5}.icon{font-size:26px}
+input,textarea{width:100%;background:#080d15;color:white;border:1px solid #263246;border-radius:12px;padding:13px;margin-top:8px;outline:none}
+button{width:100%;border:0;border-radius:12px;padding:13px;margin-top:10px;background:#2f7df6;color:white;font-weight:700}
+.result{margin-top:12px;padding:12px;border-radius:12px;background:#111b28;display:none}.low{color:#39d98a}.medium{color:#ffc857}.high{color:#ff647c}
+footer{text-align:center;color:#687486;margin:28px 0 5px;font-size:12px}
+@media(max-width:600px){.grid{grid-template-columns:1fr}.container{padding:16px}}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="brand">🛡️ Ritik <span>CyberTech</span></div>
+  <div class="subtitle">Real-time digital fraud protection</div>
+
+  <div class="status">
+    <span class="dot"></span><b>Protection Active</b>
+    <div style="color:#9ba7b7;margin-top:8px">Demo protection engine is monitoring your digital safety.</div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="icon">🔗</div><h3>Link Scanner</h3>
+      <p>Check a suspicious URL using demo risk rules.</p>
+      <input id="url" placeholder="Paste a link, e.g. http://example.com">
+      <button onclick="scanLink()">Scan Link</button>
+      <div id="urlResult" class="result"></div>
+    </div>
+
+    <div class="card">
+      <div class="icon">💬</div><h3>Message Analyzer</h3>
+      <p>Analyze a suspicious message for common scam signals.</p>
+      <textarea id="msg" rows="3" placeholder="Paste a suspicious message"></textarea>
+      <button onclick="scanMessage()">Analyze Message</button>
+      <div id="msgResult" class="result"></div>
+    </div>
+
+    <div class="card">
+      <div class="icon">💳</div><h3>UPI Protection</h3>
+      <p>Demo warning screen for risky payment situations.</p>
+      <button onclick="upiDemo()">Run Payment Safety Check</button>
+      <div id="upiResult" class="result"></div>
+    </div>
+
+    <div class="card">
+      <div class="icon">🚨</div><h3>Threat Center</h3>
+      <p>Review demo security events and recommended actions.</p>
+      <button onclick="alert('Demo alert: Never share your UPI PIN or OTP. Verify the recipient before paying.')">View Safety Alert</button>
+    </div>
+  </div>
+
+  <footer>Ritik CyberTech • Prototype • Demo data only</footer>
+</div>
+
+<script>
+function show(id,html){const e=document.getElementById(id);e.innerHTML=html;e.style.display='block'}
+function scanLink(){
+ const v=document.getElementById('url').value.trim().toLowerCase();
+ if(!v){show('urlResult','Enter a link first.');return}
+ const risky=/login|verify|urgent|free|gift|prize|bit\.ly|tinyurl|@/.test(v);
+ show('urlResult',risky
+ ? '<b class="high">HIGH RISK — Demo detection</b><br>Suspicious words or URL patterns were detected. Do not enter passwords or payment information.'
+ : '<b class="low">LOW RISK — Demo result</b><br>No obvious demo warning patterns were detected. This does not guarantee the website is safe.');
+}
+function scanMessage(){
+ const v=document.getElementById('msg').value.trim().toLowerCase();
+ if(!v){show('msgResult','Enter a message first.');return}
+ const risky=/otp|upi pin|urgent|account blocked|verify now|prize|send money|refund|kyc/.test(v);
+ show('msgResult',risky
+ ? '<b class="high">HIGH RISK — Demo detection</b><br>Possible social-engineering signals detected. Verify through an official channel.'
+ : '<b class="low">LOW RISK — Demo result</b><br>No obvious scam phrases were detected. Stay cautious.');
+}
+function upiDemo(){
+ show('upiResult','<b class="medium">PAYMENT CHECK — DEMO</b><br>Before paying, verify the recipient name, amount and reason. Never share your UPI PIN or OTP. This prototype cannot inspect real UPI transactions.');
+}
+</script>
+</body>
+</html>
