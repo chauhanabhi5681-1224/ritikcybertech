@@ -1,0 +1,15 @@
+{
+  "name": "Ritik CyberTech",
+  "short_name": "Ritik CyberTech",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#020602",
+  "theme_color": "#19ff3b",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    }
+  ]
+}
